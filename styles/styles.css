@@ -1,0 +1,97 @@
+
+
+@charset "UTF-8";
+
+
+
+:root {
+
+    --cinzaEscuroAzulado: #3F535E;
+    --azulEscuro: #234A5E;
+    --anil: #3F85AB;
+    --azul: #52ADDE;
+    --azulClaro: #98C9E3;
+
+
+
+}
+
+
+
+* {
+
+    font-family: Arial, Helvetica, sans-serif;
+    
+}
+
+body, html {
+
+    height: 100%;
+    background-image: linear-gradient(to bottom, var(--azulEscuro), var(--anil));
+    color: #98C9E3;
+
+}
+
+h1 {
+
+    padding-bottom: 30px;
+    text-align: center;
+    color: var(--azulClaro);
+
+
+}
+
+
+div.content {
+
+    display: inline-block;
+    position: relative;
+    text-align: center;
+    background-color: var(--azulClaro);
+    color: var(--anil);
+    width: 250px;
+    height: 130px;
+    padding: 10px;
+    border-radius: 15px;
+    margin-left: auto;
+    margin-right: auto;
+
+}
+
+
+p.queryphp {
+
+
+    size: 2px;
+
+
+}
+
+table {
+
+    border-collapse: collapse;
+    border: 1px solid white;
+    margin-left: auto;
+    margin-right: auto;
+    
+
+
+}
+
+td, th {
+
+
+    border: 1px solid white;
+    text-align: center;
+    padding: 15px;
+}
+
+
+.botaoRedireciona {
+
+    background-color: var(--azulClaro);
+    color: white;
+    text-decoration: none;
+
+
+}
