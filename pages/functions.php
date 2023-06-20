@@ -61,9 +61,14 @@
 
         try {
 
-        
+            require_once("../vendor/autoload.php");
 
-            $connection = new mysqli("localhost", "phplogger", "keftra12", "student_register");
+            //$connection = new mysqli("localhost", "phplogger", "keftra12", "student_register");
+
+            $dotenv = Dotenv\Dotenv::createImmutable($_SERVER["DOCUMENT_ROOT"]);
+            $dotenv->load();
+
+            $connection = new mysqli($_ENV["HOSTNAME"], $_ENV["USER"], $_ENV["PASSWORD"], $_ENV["DB_NAME"]);
 
             if (!!mysqli_connect_errno()) {
                     
