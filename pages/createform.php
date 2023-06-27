@@ -1,3 +1,16 @@
+<?php 
+
+session_start();
+if ( ! isset($_SESSION["name"] ) ) {
+    header("Location: home.php");
+}
+
+else {
+
+
+
+?>
+
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
@@ -15,7 +28,8 @@
 
         try {
 
-            require("functions.php");
+            require("functions/validations.php");
+            require("functions/connection.php");
         
         
             if (isset($_POST)) {
@@ -58,42 +72,39 @@
 
 
 
-                if ($status ) {
-
-                    echo "<p>Dados cadastrados com sucesso!!</>";
-                    
-                    echo "<div><button onclick = widow.location.href='create.php'>Cadastrar novo aluno</button>";
-                    echo "<button onclick = window.location.href='../index.html'>Voltar ao menu princippal</button></div>";
-
-
-                } else {
-
-                    echo "<h3> Erro:" . $erro . "</h3>";
-                    echo "<button onclick = window.location.href='create.php'>Retornar</button>";
-
-                }
+                
 
                 // logando no banco de dados
                 $connection = ConnectDataBase();
 
                 if ($connection != null) {
 
-                    $result = $connection->query('INSERT INTO students (Name, BirthDay, Classroom, Register) VALUES ("' . $nome . '", "' . $data . '", "' . $sala . '", "' . $cpf . '");');
+                    $result = $connection->query('INSERT INTO students (Name, BirthDay, Classroom, CPF) VALUES ("' . $nome . '", "' . $data . '", "' . $sala . '", "' . $cpf . '");');
 
-                    if ($connection->errno == 0 ) {
-
-                        echo "<p> Dados cadastrados com sucesso!!</p>";
-
-                    } else {
+                    if ($connection->errno != 0 ) {
 
                         echo "<p> Erro no cadastro, entre em contato com o administrador</p>";
 
                     }
 
-
                 } else {
 
                     echo "<p> Erro de conexão com o Banco de Dados!!</p>";
+
+                }
+
+                if ($status ) {
+
+                    echo "<p>Dados cadastrados com sucesso!!</>";
+                    
+                    echo "<div><button onclick = widow.location.href='create.php'>Cadastrar novo aluno</button>";
+                    echo "<button onclick = window.location.href='../index.php'>Voltar ao menu princippal</button></div>";
+
+
+                } else {
+
+                    echo "<h3> Erro:" . $erro . "</h3>";
+                    echo "<button onclick = window.location.href='create.php'>Retornar</button>";
 
                 }
 
@@ -106,8 +117,19 @@
             }
 
         } catch (Exception $e) {
+            echo "<h3>";
+            
+            switch($e->getMessage()) {
 
-            echo $e->getMessage();
+                case "Unknown column 'Register' in 'field list'":
+                    //  TODO: escrever arquivo de log e registrar essa possível falha na logica
+                    echo "Erro de Tabela, consulte algum administrador!!";
+
+            }
+
+
+            echo "</h3>";
+            echo "<button onclick = window.location.href='create.php'>Retornar</button>";
 
         }
 
@@ -126,3 +148,10 @@
 
 </body>
 </html>
+
+
+<?php 
+
+}
+
+?>

@@ -1,3 +1,15 @@
+<?php 
+
+session_start();
+
+if (isset($_SESSION["name"])) {
+
+
+?>
+
+
+
+
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
@@ -32,4 +44,26 @@
 
     
 </body>
+
+<footer>
+    <a href="pages/logout.php">
+        <button type="button">
+            Logout
+        </button>
+    </a>
+</footer>
+
 </html>
+
+
+<?php 
+
+} else {
+
+
+    header("Location: /pages/home.php");
+    exit();
+
+
+}
+?>

@@ -1,3 +1,15 @@
+<?php 
+
+session_start();
+if ( ! isset($_SESSION["name"] ) ) {
+    header("Location: home.php");
+}
+
+else {
+
+?>
+
+
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
@@ -51,9 +63,10 @@
         
             // TODO: atribuir buscas no HTML para outros valores além do CPF
 
-            require("functions.php");
+            require("functions/connection.php");
+            require("functions/display.php");
 
-            session_start();
+        
 
             if(isset($_POST)) {
 
@@ -155,3 +168,10 @@
     
 </body>
 </html>
+
+
+<?php 
+
+}
+
+?>

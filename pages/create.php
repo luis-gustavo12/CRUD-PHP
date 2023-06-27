@@ -1,3 +1,14 @@
+<?php 
+
+
+session_start();
+if (isset($_SESSION["name"])) {
+
+?>
+
+
+
+
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
@@ -40,3 +51,16 @@
 
 </body>
 </html>
+
+
+<?php 
+
+} else {
+
+    header("Location: /pages/home.php");
+    exit();
+
+}
+
+
+?>

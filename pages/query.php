@@ -1,3 +1,15 @@
+<?php 
+
+session_start();
+if ( ! isset($_SESSION["name"] ) ) {
+    header("Location: home.php");
+}
+
+else {
+
+?>
+
+
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
@@ -13,7 +25,8 @@
 
     <?php
         
-        require("functions.php");
+        require("functions/connection.php");
+        require("functions/display.php");
            
         $connection = ConnectDataBase();
 
@@ -77,3 +90,10 @@
     
 </body>
 </html>
+
+
+<?php 
+
+}
+
+?>

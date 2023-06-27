@@ -95,3 +95,27 @@ td, th {
 
 
 }
+
+#backgroundForm {
+
+    background-color: var(--azulClaro);
+    border-radius: 8px;
+    color: white;
+    padding: 15px;
+    /* position: fixed;
+    top: 28%;
+    left: 40%; */
+    top: 50%;
+    left: 57%;
+    width: 15em;
+    height: 5em;
+    margin-top: -9em;
+    margin-left: -16em;
+    border: 1px solid #666;
+    position: fixed;
+    
+    
+
+
+
+}

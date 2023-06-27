@@ -14,7 +14,8 @@
     <?php 
     
 
-    require("functions.php");
+    require("functions/connection.php");
+    require("functions/display.php");
 
     $statusEnvio = false;
 
@@ -40,20 +41,20 @@
 
 
                 case "CPF":
-                    $queryString = "UPDATE students SET CPF = " . $_POST["envioTroca"] . " WHERE CPF = " . $_POST["selectRegistros"] . ";";
+                    $queryString = sprintf('UPDATE students SET CPF ="%s" WHERE CPF = "%s";'. $_POST["envioTroca"], $_POST["selectRegistros"]);
                     $connection->query($queryString);
                     $statusEnvio = true;
                     break;
 
-                case "nome":         
-                    $queryString = "UPDATE students SET Name='" . $_POST["envioTroca"] . "' WHERE CPF = '" . $registro . "';";
+                case "nome":
+                    $queryString = sprintf('UPDATE students SET Name = "%s" WHERE CPF = "%s"; ',$_POST["envioTroca"], $_POST["selectRegistros"] );      
                     $connection->query($queryString);
                     $statusEnvio = true;
                     break;
 
 
                 case "sala":
-                    $queryString = sprintf('UPDATE studensts SET Classroom = "%s" WHERE CPF = %s;', $_POST["envioTroca"], $_POST["selectRegistro"]);
+                    $queryString = sprintf('UPDATE students SET Classroom = "%s" WHERE CPF = "%s";', $_POST["envioTroca"], $_POST["selectRegistro"]);
                     $connection->query($queryString);
                     $statusEnvio = true;
                     break;
@@ -86,7 +87,7 @@
         echo '
         <script>
             
-            window.location.replace("../index.html")
+            window.location.replace("../index.php")
         </script>
         ';
         
