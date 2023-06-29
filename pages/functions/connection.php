@@ -6,7 +6,6 @@
 
             require_once("../vendor/autoload.php");
 
-            //$connection = new mysqli("localhost", "phplogger", "keftra12", "student_register");
 
             $dotenv = Dotenv\Dotenv::createImmutable($_SERVER["DOCUMENT_ROOT"]);
             $dotenv->load();
